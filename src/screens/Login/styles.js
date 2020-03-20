@@ -1,21 +1,6 @@
-const React = require('react-native')
-const { StyleSheet } = React
+import { StyleSheet } from 'react-native'
 
-
-var styles = StyleSheet.create({
-  loginPage: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#042A2B',
-  },
-  logo: {
-    resizeMode: 'center',
-  },
-   loginText: {
-    fontSize: 18,
-    color: '#FFFFFF'
-  },
+const styles = StyleSheet.create({
   inputField: {
     height: 40,
     width: 200,
@@ -29,13 +14,25 @@ var styles = StyleSheet.create({
   loginButton: {
     color: '#FFFFFF'
   },
+  loginPage: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#042A2B',
+  },
+  loginText: {
+    fontSize: 18,
+    color: '#FFFFFF'
+  },
+  logo: {
+    resizeMode: 'center',
+  },
   registerMessage: {
     color: '#FFFFFF'
-  }
+  },
 })
 
-
-module.exports = styles
+export default styles
 
 /*
 Resources:

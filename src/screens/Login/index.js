@@ -1,11 +1,15 @@
 import React, { Component} from 'react'
-import { Text, View, TextInput, Button, Image } from 'react-native'
-// import firebase from 'firebase'
+import {
+  Button,
+  Image,
+  Text,
+  TextInput,
+  View,
+} from 'react-native'
 
-import * as styles from './styles'
+import styles from './styles'
 
-
-export default class Login extends Component {
+class Login extends Component {
   constructor() {
     super()
     this.state = {
@@ -107,6 +111,8 @@ onRegister = () => {
     )
   }
 }
+
+export default Login
 
 /*
 Resources:

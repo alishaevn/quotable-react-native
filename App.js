@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import Home from './src/components/Home'
-import Login from './src/components/Login'
+import Login from './src/screens/Login'
 
 export default class App extends Component {
   // constructor() {
