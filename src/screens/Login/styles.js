@@ -1,6 +1,12 @@
 import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#042A2B',
+  },
   inputField: {
     height: 40,
     width: 200,
@@ -10,10 +16,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 20,
     backgroundColor: '#FFFFFF'
-  },
-  loginText: {
-    fontSize: 18,
-    color: '#FFFFFF'
   },
   logo: {
     resizeMode: 'center',
