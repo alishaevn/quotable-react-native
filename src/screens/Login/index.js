@@ -21,33 +21,11 @@ class Login extends Component {
     }
 
     onLogin = () => {
-        const { email, password } = this.state;
         console.log('clicked the login button')
-        // firebase.auth().signInWithEmailAndPassword(email, password)
-        //   .catch((error) => {
-        //     const { code, message } = error;
-        //     // The message contains the default Firebase string representation of the error
-        //     if (code === 'auth/wrong-password') {
-        //       alert('Wrong password.');
-        //     } else {
-        //       alert(message);
-        //     }
-        //   });
     }
 
     onRegister = () => {
-        const { email, password } = this.state;
         console.log('clicked the register button')
-        // firebase.auth().createUserWithEmailAndPassword(email, password)
-        //   .catch((error) => {
-        //     const { code, message } = error;
-        //     // The message contains the default Firebase string representation of the error
-        //     if (code === 'auth/weak-password') {
-        //       alert('The password is too weak.');
-        //     } else {
-        //       alert(message);
-        //     }
-        //   });
     }
 
     render() {
