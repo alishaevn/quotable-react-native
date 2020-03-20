@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import {
     Image,
     Text,
-    TextInput,
     View,
 } from 'react-native'
 
 import Button from '../../components/Button'
+import Input from '../../components/Input'
 import logo from '../../assets/images/logo.png'
 import styles from './styles'
 
@@ -14,6 +14,8 @@ class Login extends Component {
     constructor() {
         super()
         this.state = {
+            email: '',
+            password: '',
             register: true,
         }
     }
@@ -49,7 +51,11 @@ class Login extends Component {
     }
 
     render() {
-        const { register } = this.state
+        const {
+            email,
+            password,
+            register,
+        } = this.state
         let onPress
         let option
         let text
@@ -70,25 +76,21 @@ class Login extends Component {
                     source={logo}
                     style={styles.logo}
                 />
-                <Text style={styles.loginText}>
-                    Email
-                </Text>
-                <TextInput
-                    style={styles.inputField}
+                <Input
                     autoCapitalize={'none'}
-                    onChangeText={(email) => this.setState({ email })}
-                    value={this.state.email}
+                    maxLength={50}
+                    onChangeText={value => this.setState({ email: value })}
+                    secureTextEntry={false}
+                    title='Email'
+                    value={email}
                 />
-                <Text style={styles.loginText}>
-                    Password
-                </Text>
-                <TextInput
-                    style={styles.inputField}
-                    maxLength={30}
-                    secureTextEntry={true}
+                <Input
                     autoCapitalize={'none'}
-                    onChangeText={(password) => this.setState({ password })}
-                    value={this.state.password}
+                    maxLength={30}
+                    onChangeText={value => this.setState({ password: value })}
+                    secureTextEntry={true}
+                    title='Password'
+                    value={password}
                 />
                 <Button
                     onPress={onPress}
