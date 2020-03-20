@@ -1,19 +1,20 @@
 import React, { Component} from 'react'
 import {
-  Button,
   Image,
   Text,
   TextInput,
   View,
 } from 'react-native'
 
+import Button from '../../components/Button'
 import styles from './styles'
 
 class Login extends Component {
   constructor() {
     super()
     this.state = {
-      registering: false
+      registering: false,
+      button: 'login'
     }
   }
 
@@ -46,9 +47,18 @@ onRegister = () => {
 }
 
   render() {
+    const { button, registering } = this.state
+    let registerMessage
+    let onPress
+    let text
 
-    let button;
-    let registerMessage;
+    if (button === 'Login') {
+      text = 'Login'
+      onPress = () => this.onLogin()
+    } else {
+      text = 'Register'
+      onPress = () => this.onRegister()
+    }
 
     if(this.state.registering) {
       button = (<Button
@@ -104,7 +114,10 @@ onRegister = () => {
           value={this.state.password}
         />
 
-        { button }
+        <Button
+          onPress={onPress}
+          text={text}
+        />
         { registerMessage }
 
       </View>

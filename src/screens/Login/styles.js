@@ -11,15 +11,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     backgroundColor: '#FFFFFF'
   },
-  loginButton: {
-    color: '#FFFFFF'
-  },
-  loginPage: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#042A2B',
-  },
   loginText: {
     fontSize: 18,
     color: '#FFFFFF'
