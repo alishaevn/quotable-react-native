@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { width } from '../../utilities/dimensions'
 
 const styles = StyleSheet.create({
   container: {
@@ -9,7 +10,7 @@ const styles = StyleSheet.create({
   },
   inputField: {
     height: 40,
-    width: 200,
+    width: width * .75,
     borderColor: '#FFFFFF',
     borderWidth: 1,
     borderRadius: 5,
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
   logo: {
     resizeMode: 'center',
   },
-  registerMessage: {
+  optionText: {
     color: '#FFFFFF'
   },
 })
