@@ -15,8 +15,10 @@ class Login extends Component {
         super()
         this.state = {
             email: '',
+            name: '',
             password: '',
             register: true,
+            username: '',
         }
     }
 
@@ -31,8 +33,10 @@ class Login extends Component {
     render() {
         const {
             email,
+            name,
             password,
             register,
+            username,
         } = this.state
         let onPress
         let option
@@ -40,11 +44,11 @@ class Login extends Component {
 
         if (register) {
             onPress = () => this.onRegister()
-            option = 'Click here to Login'
+            option = 'Click to login instead'
             text = 'Register'
         } else {
             onPress = () => this.onLogin()
-            option = 'Click here to Register'
+            option = 'Click to register instead'
             text = 'Login'
         }
 
@@ -58,18 +62,43 @@ class Login extends Component {
                     autoCapitalize={'none'}
                     maxLength={50}
                     onChangeText={value => this.setState({ email: value })}
+                    keyboardType='email-address'
+                    placeholder='Email'
                     secureTextEntry={false}
-                    title='Email'
+                    size={.75}
                     value={email}
                 />
                 <Input
                     autoCapitalize={'none'}
-                    maxLength={30}
+                    maxLength={20}
                     onChangeText={value => this.setState({ password: value })}
+                    placeholder='Password'
                     secureTextEntry={true}
-                    title='Password'
+                    size={.75}
                     value={password}
                 />
+                {register &&
+                    <View style={styles.inputWrapper}>
+                        <Input
+                            autoCapitalize={'words'}
+                            maxLength={20}
+                            onChangeText={value => this.setState({ name: value })}
+                            placeholder='First Name'
+                            secureTextEntry={false}
+                            size={.35}
+                            value={name}
+                        />
+                        <Input
+                            autoCapitalize={'none'}
+                            maxLength={20}
+                            onChangeText={value => this.setState({ username: value })}
+                            placeholder='Username'
+                            secureTextEntry={false}
+                            size={.35}
+                            value={username}
+                        />
+                    </View>
+                }
                 <Button
                     onPress={onPress}
                     text={text}

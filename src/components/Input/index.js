@@ -1,27 +1,24 @@
 import React from 'react'
-import {
-    Text,
-    TextInput,
-    View,
-} from 'react-native'
+import { TextInput } from 'react-native'
 
-import styles from './styles'
+import { colors } from '../../utilities/colors'
+import stylesFn from './styles'
 
-const Input = ({ autoCapitalize, maxLength, onChangeText, secureTextEntry, title, value }) => {
+const Input = ({ autoCapitalize, keyboardType, maxLength, onChangeText, secureTextEntry, size, placeholder, value }) => {
+    const styles = stylesFn(size)
+
     return (
-        <View>
-            <Text style={styles.title}>
-                {`${title}`}
-            </Text>
-            <TextInput
-                style={styles.input}
-                maxLength={maxLength}
-                secureTextEntry={secureTextEntry}
-                autoCapitalize={autoCapitalize}
-                onChangeText={value => onChangeText(value)}
-                value={value}
-            />
-        </View>
+        <TextInput
+            style={styles.input}
+            maxLength={maxLength}
+            secureTextEntry={secureTextEntry}
+            autoCapitalize={autoCapitalize}
+            onChangeText={value => onChangeText(value)}
+            value={value}
+            keyboardType={keyboardType}
+            placeholder={placeholder}
+            placeholderTextColor={colors.gray}
+        />
     )
 }
 

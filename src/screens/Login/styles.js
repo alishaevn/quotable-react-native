@@ -19,11 +19,18 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     backgroundColor: colors.white
   },
+  inputWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: width * .75,
+  },
   logo: {
     resizeMode: 'center',
+    height: 300,
   },
   optionText: {
-    color: colors.white
+    color: colors.white,
+    marginTop: 20,
   },
 })
 

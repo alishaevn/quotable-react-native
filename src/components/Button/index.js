@@ -8,8 +8,11 @@ import styles from './styles'
 
 const Button = ({ onPress, text }) => {
     return (
-        <TouchableOpacity onPress={onPress}>
-            <View style={styles.button}>
+        <TouchableOpacity
+            onPress={onPress}
+            style={styles.button}
+        >
+            <View>
                 <Text style={styles.text}>
                     {text}
                 </Text>
