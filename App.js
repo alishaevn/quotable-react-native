@@ -1,33 +1,31 @@
 import React, { Component } from 'react'
+import AsyncStorage from '@react-native-community/async-storage'
 
 import Home from './src/screens/Home'
 import Login from './src/screens/Login'
 
 export default class App extends Component {
-  // constructor() {
-  //   super()
-  //   this.state = {
-  //     loading: true,
-  //     user: false,
-  //   }
-  // }
+    constructor() {
+        super()
+        this.state = {
+            user: null,
+        }
+    }
 
-  // componentDidMount() {
-  //   this.authSubscription = firebase.auth().onAuthStateChanged((user) => {
-  //     this.setState({
-  //       loading: false,
-  //       user,
-  //     })
-  //   })
-  // }
+    async componentDidMount() {
+        try {
+            const user = await AsyncStorage.getItem('user')
+            this.setState({ user })
+        } catch(error) {
+            console.log('failed to load the "user" from asyncstorage because:', error)
+        }
+    }
 
-  // componentWillUnmount() {
-  //   this.authSubscription();
-  // }
+    updateState = user => this.setState({ user })
 
-  render() {
-    // if (this.state.loading) return null // The application is loading
-    // if (this.state.user) return <Home /> // The user is logged in (not null) so redirect Home
-    return <Login /> // The user is logged out (null) so redirect to the login page
-  }
+    render() {
+        const { user } = this.state
+
+        return user ? <Home /> : <Login updateState={this.updateState} />
+    }
 }

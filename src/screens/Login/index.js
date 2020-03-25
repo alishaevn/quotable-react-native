@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import {
+    Alert,
     Image,
     Text,
     View,
 } from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage'
+import axios from 'axios'
 
 import Button from '../../components/Button'
 import Input from '../../components/Input'
@@ -27,7 +30,49 @@ class Login extends Component {
     }
 
     onRegister = () => {
-        console.log('clicked the register button')
+        const {
+            email,
+            name,
+            password,
+            username,
+        } = this.state
+        const { updateState } = this.props
+
+        if (!email || !name || !password || !username) {
+            Alert.alert('Please fill in all fields!')
+        }
+
+        axios.post('http://localhost:3000/users', {
+            email,
+            name,
+            password,
+            username,
+        }, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(async response => {
+                const {
+                    email,
+                    name,
+                    username,
+                } = response.data
+                const user = {
+                    email,
+                    name,
+                    username,
+                }
+
+                try {
+                    await AsyncStorage.setItem('user', JSON.stringify(user))
+                    updateState(user)
+                } catch (error) {
+                    console.log('failed to save the user to async storage because:', error)
+                }
+            })
+            .catch(error => console.log('failed to create the user because', error))
     }
 
     render() {
