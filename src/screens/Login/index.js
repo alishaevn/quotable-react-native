@@ -153,6 +153,8 @@ class Login extends Component {
                     secureTextEntry={false}
                     size={.75}
                     value={email}
+                    returnKeyType='next'
+                    textContentType='emailAddress'
                 />
                 <Input
                     autoCapitalize={'none'}
@@ -162,6 +164,8 @@ class Login extends Component {
                     secureTextEntry={true}
                     size={.75}
                     value={password}
+                    returnKeyType='next'
+                    textContentType={register ? 'newPassword' : 'password'}
                 />
                 {register &&
                     <View style={styles.inputWrapper}>
@@ -173,6 +177,8 @@ class Login extends Component {
                             secureTextEntry={false}
                             size={.35}
                             value={name}
+                            returnKeyType='next'
+                            textContentType='givenName'
                         />
                         <Input
                             autoCapitalize={'none'}
@@ -182,6 +188,8 @@ class Login extends Component {
                             secureTextEntry={false}
                             size={.35}
                             value={username}
+                            returnKeyType='done'
+                            textContentType='username'
                         />
                     </View>
                 }

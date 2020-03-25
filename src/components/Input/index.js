@@ -4,7 +4,7 @@ import { TextInput } from 'react-native'
 import { colors } from '../../utilities/colors'
 import stylesFn from './styles'
 
-const Input = ({ autoCapitalize, keyboardType, maxLength, onChangeText, secureTextEntry, size, placeholder, value }) => {
+const Input = ({ autoCapitalize, keyboardType, maxLength, onChangeText, secureTextEntry, size, placeholder, returnKeyType, textContentType, value }) => {
     const styles = stylesFn(size)
 
     return (
@@ -18,6 +18,8 @@ const Input = ({ autoCapitalize, keyboardType, maxLength, onChangeText, secureTe
             keyboardType={keyboardType}
             placeholder={placeholder}
             placeholderTextColor={colors.gray}
+            returnKeyType={returnKeyType}
+            textContentType={textContentType}
         />
     )
 }

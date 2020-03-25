@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import {
-  ScrollView,
   Text,
   View,
 } from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage'
 import { TabNavigator, TabBarBottom } from '@react-navigation/native'
 import { Ionicons } from 'react-native-vector-icons'
 // import firebase from 'firebase'

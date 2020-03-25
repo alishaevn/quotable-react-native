@@ -26,6 +26,6 @@ export default class App extends Component {
     render() {
         const { user } = this.state
 
-        return user ? <Home /> : <Login updateState={this.updateState} />
+        return user ? <Home updateState={this.updateState} /> : <Login updateState={this.updateState} />
     }
 }
