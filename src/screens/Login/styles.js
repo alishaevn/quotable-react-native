@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
   logo: {
     resizeMode: 'center',
     height: 300,
+    width: width * .8
   },
   optionText: {
     color: colors.white,

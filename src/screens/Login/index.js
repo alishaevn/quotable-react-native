@@ -2,10 +2,12 @@ import React, { Component } from 'react'
 import {
     Alert,
     Image,
+    StatusBar,
     Text,
     View,
 } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import axios from 'axios'
 
 import Button from '../../components/Button'
@@ -70,7 +72,6 @@ class Login extends Component {
 
     onRegister = () => {
         const {
-            email,
             name,
             password,
             username,
@@ -139,7 +140,12 @@ class Login extends Component {
         }
 
         return (
-            <View style={styles.container}>
+            <KeyboardAwareScrollView
+                resetScrollToCoords={{ x: 0, y: 0 }}
+                contentContainerStyle={styles.container}
+                scrollEnabled={false}
+            >
+                <StatusBar barStyle='light-content' />
                 <Image
                     source={logo}
                     style={styles.logo}
@@ -203,7 +209,7 @@ class Login extends Component {
                 >
                     {`${option}`}
                 </Text>
-            </View>
+            </KeyboardAwareScrollView>
         )
     }
 }
