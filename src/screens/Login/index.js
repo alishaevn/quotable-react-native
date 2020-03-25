@@ -26,7 +26,46 @@ class Login extends Component {
     }
 
     onLogin = () => {
-        console.log('clicked the login button')
+        const { password } = this.state
+        let { email } = this.state
+        const { updateState } = this.props
+
+        if (!email || !password) {
+            Alert.alert('Please fill in all fields!')
+        }
+        email = email.toLowerCase()
+
+        axios.post('http://localhost:3000/auth/login', {
+            email,
+            password,
+        }, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(async response => {
+                const {
+                    email,
+                    name,
+                    token,
+                    username,
+                } = response.data
+                const user = {
+                    email,
+                    name,
+                    username,
+                }
+
+                try {
+                    await AsyncStorage.setItem('user', JSON.stringify(user))
+                    await AsyncStorage.setItem('token', JSON.stringify(token))
+                    updateState(user)
+                } catch (error) {
+                    console.log('failed to save the user or token to async storage because:', error)
+                }
+            })
+            .catch(error => console.log('failed to log the user in because:', error))
     }
 
     onRegister = () => {
@@ -36,11 +75,13 @@ class Login extends Component {
             password,
             username,
         } = this.state
+        let { email } = this.state
         const { updateState } = this.props
 
         if (!email || !name || !password || !username) {
             Alert.alert('Please fill in all fields!')
         }
+        email = email.toLowerCase()
 
         axios.post('http://localhost:3000/users', {
             email,
