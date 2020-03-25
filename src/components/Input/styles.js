@@ -1,20 +1,21 @@
 import { StyleSheet } from 'react-native'
+import { colors } from '../../utilities/colors'
 import { width } from '../../utilities/dimensions'
 
-const styles = StyleSheet.create({
+const stylesFn = size => StyleSheet.create({
   input: {
     height: 40,
-    width: width * .75,
-    borderColor: '#FFFFFF',
+    width: width * size,
+    borderColor: colors.white,
     borderWidth: 1,
     borderRadius: 5,
-    marginTop: 10,
-    marginBottom: 20,
-    backgroundColor: '#FFFFFF'
+    marginVertical: 10,
+    backgroundColor: colors.white,
+    paddingLeft: 10,
   },
   title: {
-    color: '#FFFFFF',
+    color: colors.white,
   }
 })
 
-export default styles
+export default stylesFn
