@@ -170,7 +170,7 @@ class Login extends Component {
                     secureTextEntry={true}
                     size={.75}
                     value={password}
-                    returnKeyType='next'
+                    returnKeyType={register ? 'next' : 'done'}
                     textContentType={register ? 'newPassword' : 'password'}
                 />
                 {register &&
