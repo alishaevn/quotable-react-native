@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
@@ -18,7 +19,7 @@ import * as styles from './styles'
 /* ======================
  HOME COMPONENT
  ====================== */
-// class Home extends Component {
+export default class Home extends Component {
 //   constructor() {
 //     super()
 //     this.state = {
@@ -87,22 +88,39 @@ import * as styles from './styles'
 
 //   }
 
-//   render() {
+  onLogout = () => {
+    const { updateState } = this.props
+
+    AsyncStorage.removeItem('user')
+    AsyncStorage.removeItem('token')
+    updateState(false)
+  }
+
+  render() {
 
 //     let iconName = this.state.clicked ? 'ios-heart' : 'ios-heart-outline'
 //     let tintColor = this.state.clicked ? '#5EB1BF' : ''
 
-//     return (
-//       <View style={styles.container} >
-//         {/* <DoubleClick onClick={() => this.saveQuote()} >
-//           <Text style={styles.homeQuote}>{ this.state.quote }</Text>
-//           <Text style={styles.homeAuthor}>{ this.state.author }</Text>
-//         </DoubleClick> */}
-//         <Ionicons name={iconName} size={25} color={tintColor}/>
-//       </View>
-//     );
-//   }
-// }
+    // return (
+    //   <View style={styles.container} >
+    //     {/* <DoubleClick onClick={() => this.saveQuote()} >
+    //       <Text style={styles.homeQuote}>{ this.state.quote }</Text>
+    //       <Text style={styles.homeAuthor}>{ this.state.author }</Text>
+    //     </DoubleClick> */}
+    //     <Ionicons name={iconName} size={25} color={tintColor}/>
+    //   </View>
+    // );
+
+    return (
+      <View style={{ alignSelf: 'center', marginTop: 100 }}>
+        <TouchableOpacity onPress={this.onLogout} >
+          <Text>logout</Text>
+        </TouchableOpacity>
+      </View>
+    )
+
+  }
+}
 
 
 // /* ======================
