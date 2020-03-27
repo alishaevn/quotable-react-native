@@ -5,6 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import Home from '../screens/Home'
 import Profile from '../screens/Profile'
+import { colors } from '../utilities/colors'
 
 const Tab = createBottomTabNavigator()
 
@@ -25,13 +26,12 @@ const Tabs = () => (
                             : 'ios-list'
                     }
 
-                    // You can return any component that you like here!
                     return <Ionicons name={iconName} size={25} color={color} />
                 },
             })}
             tabBarOptions={{
-                activeTintColor: '#5EB1BF',
-                inactiveTintColor: 'gray',
+                activeTintColor: colors.forestGreen,
+                inactiveTintColor: colors.gray,
             }}
         >
             <Tab.Screen
