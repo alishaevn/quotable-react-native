@@ -16,10 +16,7 @@ import * as styles from './styles'
 // const firebaseDb = firebaseApp.database().ref()
 
 
-/* ======================
- HOME COMPONENT
- ====================== */
-export default class Home extends Component {
+class Home extends Component {
 //   constructor() {
 //     super()
 //     this.state = {
@@ -118,113 +115,10 @@ export default class Home extends Component {
         </TouchableOpacity>
       </View>
     )
-
   }
 }
 
-
-// /* ======================
-//  PROFILE COMPONENT
-//  ====================== */
-// class Profile extends React.Component {
-//   constructor() {
-//     super()
-//     this.state = {
-//       userQuotes: []
-//     }
-//   }
-
-//   componentDidMount() {
-//     // RETRIEVE USER'S QUOTES
-//     // firebaseDb.on('value', snap => {
-//     //   const uid = firebase.auth().currentUser.uid
-
-//     //   let usersProp =  snap.val().users // entire users object
-//     //   let objectToArray = Object.values(usersProp) // array of user objects
-//     //   let userQuotes = objectToArray.filter(obj => obj.uid === uid) // array of objects that the user added
-
-//     //   this.setState({
-//     //     userQuotes
-//     //   })
-//     // })
-//   }
-
-//   render() {
-//     // const user = firebase.auth().currentUser
-//     let name, photoUrl /* email */
-
-//     if (user !== null) {
-//       name = user.displayName ? user.displayName : ''
-//       photoUrl = user.photoURL ? user.photoURL : ''
-//       // email = user.email
-//     }
-
-//     // LIST EACH QUOTE INSIDE OF A VIEW
-//     let printToScreen = this.state.userQuotes.map((obj, index) => (
-//         <View style={styles.quoteBlock} key={index} >
-//           <Text style={styles.profileQuote}>{ obj.quote }</Text>
-//           <Text style={styles.profileAuthor}>{ obj.author }</Text>
-//       </View>
-//       ))
-
-//     return (
-//       <View style={styles.profile}>
-//         <View style={styles.header}>
-//           <Text
-//             // onPress={() => firebase.auth().signOut()}
-//             style={styles.signOut}
-//           >
-//             Sign Out
-//           </Text>
-//           <Text>{ name }</Text>
-//           {/* <Text>Email: { email}</Text> */}
-//           <Text>{ photoUrl }</Text>
-//         </View>
-
-//         <View style={styles.quotesBox}>
-//           <ScrollView>
-//             { printToScreen }
-//           </ScrollView>
-//         </View>
-//       </View>
-//     );
-//   }
-// }
-
-
-// /* ======================
-//  TABS
-//  ====================== */
-// export default TabNavigator(
-//   {
-//     Home: { screen: Home },
-//     Profile: { screen: Profile },
-//   },
-//   {
-//     navigationOptions: ({ navigation }) => ({
-//       tabBarIcon: ({ focused, tintColor }) => {
-//         const { routeName } = navigation.state;
-//         let iconName;
-//         if (routeName === 'Home') {
-//           iconName = `ios-home${focused ? '' : '-outline'}`;
-//         } else if (routeName === 'Profile') {
-//           iconName = `ios-person${focused ? '' : '-outline'}`;
-//         }
-
-//         // You can return any component that you like here! We usually use an icon component from react-native-vector-icons
-//         return <Ionicons name={iconName} size={25} color={tintColor} />;
-//       },
-//       }),
-//       tabBarOptions: {
-//         activeTintColor: '#5EB1BF',
-//         inactiveTintColor: 'gray',
-//       },
-//       tabBarComponent: TabBarBottom,
-//       tabBarPosition: 'bottom',
-//       animationEnabled: false,
-//       swipeEnabled: false,
-//     });
-
+export default Home
 
 /*
 Resources:
