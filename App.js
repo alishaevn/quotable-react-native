@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import AsyncStorage from '@react-native-community/async-storage'
 
-import Home from './src/screens/Home'
 import Login from './src/screens/Login'
+import Tabs from './src/navigation'
 
 export default class App extends Component {
     constructor() {
@@ -26,6 +26,10 @@ export default class App extends Component {
     render() {
         const { user } = this.state
 
-        return user ? <Home updateState={this.updateState} /> : <Login updateState={this.updateState} />
+        return (
+            user
+                ? <Tabs updateState={this.updateState} />
+                : <Login updateState={this.updateState} />
+        )
     }
 }
