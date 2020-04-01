@@ -1,21 +1,24 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
-  Text,
-  TouchableOpacity,
-  View,
+    Text,
+    TouchableOpacity,
+    View,
 } from 'react-native'
 // import DoubleClick from 'react-native-double-click'
 
+import { AuthContext } from '../../contexts'
 import styles from './styles'
 
 const Home = () => {
-  return (
-    <View style={{ alignSelf: 'center', marginTop: 100 }}>
-      <TouchableOpacity onPress={this.onLogout} >
-        <Text>logout</Text>
-      </TouchableOpacity>
-    </View>
-  )
+    const { onLogout } = useContext(AuthContext)
+
+    return (
+        <View style={{ alignSelf: 'center', marginTop: 100 }}>
+            <TouchableOpacity onPress={() => onLogout()} >
+                <Text>logout</Text>
+            </TouchableOpacity>
+        </View>
+    )
 }
 
 export default Home

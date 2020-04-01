@@ -5,22 +5,15 @@ import { login, register } from '../utilities/apiCalls'
 
 class AuthContextProvider extends Component {
     state = {
-        email: '',
         isAuthenticated: false,
-        name: '',
-        password: '',
         registering: false,
-        token: '',
-        username: '',
+        user: null,
     }
 
-    toggleAuth = value => this.setState({ [`${value}`]: !this.state[`${value}`] })
-
-    updateUser = (key, value) => this.setState({ [`${key}`]: value })
-
     onLogin = () => {
-        const { password } = this.state
-        let { email } = this.state
+        const { user } = this.state
+        const { password } = user
+        let { email } = user
 
         if (!email || !password) {
             Alert.alert('Please fill in all fields!')
@@ -30,13 +23,19 @@ class AuthContextProvider extends Component {
         login(email, password, this.updateUser, this.toggleAuth)
     }
 
+    onLogout = () => {
+        this.toggleAuth('isAuthenticated')
+        this.setState({ user: null })
+    }
+
     onRegister = () => {
+        const { user } = this.state
         const {
             name,
             password,
             username,
-        } = this.state
-        let { email } = this.state
+        } = user
+        let { email } = user
 
         if (!email || !name || !password || !username) {
             Alert.alert('Please fill in all fields!')
@@ -46,11 +45,16 @@ class AuthContextProvider extends Component {
         register(email, name, password, this.updateUser, username, this.toggleAuth)
     }
 
+    toggleAuth = value => this.setState({ [`${value}`]: !this.state[`${value}`] })
+
+    updateUser = (key, value) => this.setState({ user: { ...this.state.user, [`${key}`]: value } })
+
     render() {
         return (
             <AuthContext.Provider value={{
                 ...this.state,
                 onLogin: this.onLogin,
+                onLogout: this.onLogout,
                 onRegister: this.onRegister,
                 toggleAuth: this.toggleAuth,
                 updateUser: this.updateUser,
