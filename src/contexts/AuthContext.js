@@ -58,11 +58,55 @@ class AuthContextProvider extends Component {
             .catch(error => console.log('failed to log the user in because:', error))
     }
 
+    onRegister = () => {
+        const {
+            name,
+            password,
+            username,
+        } = this.state
+        let { email } = this.state
+
+        if (!email || !name || !password || !username) {
+            Alert.alert('Please fill in all fields!')
+        }
+        email = email.toLowerCase()
+
+        axios.post('http://localhost:3000/users', {
+            email,
+            name,
+            password,
+            username,
+        }, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(async response => {
+                const {
+                    email,
+                    name,
+                    username,
+                } = response.data
+
+                try {
+                    this.updateUser('email', email)
+                    this.updateUser('name', name)
+                    this.updateUser('username', username)
+                    this.toggleAuth('isAuthenticated')
+                } catch (error) {
+                    console.log('failed to save the user to async storage because:', error)
+                }
+            })
+            .catch(error => console.log('failed to create the user because', error))
+    }
+
     render() {
         return (
             <AuthContext.Provider value={{
                 ...this.state,
                 onLogin: this.onLogin,
+                onRegister: this.onRegister,
                 toggleAuth: this.toggleAuth,
                 updateUser: this.updateUser,
             }}>
