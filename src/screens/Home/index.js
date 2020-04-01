@@ -1,22 +1,26 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {
   Text,
   TouchableOpacity,
   View,
 } from 'react-native'
-import AsyncStorage from '@react-native-community/async-storage'
-import { TabNavigator, TabBarBottom } from '@react-navigation/native'
-import { Ionicons } from 'react-native-vector-icons'
-// import firebase from 'firebase'
 // import DoubleClick from 'react-native-double-click'
 
-// import { firebaseApp } from '../config'
-import * as styles from './styles'
+import styles from './styles'
 
-// const firebaseDb = firebaseApp.database().ref()
+const Home = () => {
+  return (
+    <View style={{ alignSelf: 'center', marginTop: 100 }}>
+      <TouchableOpacity onPress={this.onLogout} >
+        <Text>logout</Text>
+      </TouchableOpacity>
+    </View>
+  )
+}
 
+export default Home
 
-class Home extends Component {
+// class Home extends Component {
 //   constructor() {
 //     super()
 //     this.state = {
@@ -85,15 +89,16 @@ class Home extends Component {
 
 //   }
 
-  onLogout = () => {
-    const { updateState } = this.props
+  // onLogout = () => {
+  //   const { updateState } = this.props
 
-    AsyncStorage.removeItem('user')
-    AsyncStorage.removeItem('token')
-    updateState(false)
-  }
+  //   AsyncStorage.removeItem('user')
+  //   AsyncStorage.removeItem('token')
+  //   updateState(false)
+  // }
 
-  render() {
+  // render() {
+  //   console.log('HOME PROPS:', this.props)
 
 //     let iconName = this.state.clicked ? 'ios-heart' : 'ios-heart-outline'
 //     let tintColor = this.state.clicked ? '#5EB1BF' : ''
@@ -107,25 +112,3 @@ class Home extends Component {
     //     <Ionicons name={iconName} size={25} color={tintColor}/>
     //   </View>
     // );
-
-    return (
-      <View style={{ alignSelf: 'center', marginTop: 100 }}>
-        <TouchableOpacity onPress={this.onLogout} >
-          <Text>logout</Text>
-        </TouchableOpacity>
-      </View>
-    )
-  }
-}
-
-export default Home
-
-/*
-Resources:
-  // HOME
-  - https://www.npmjs.com/package/react-native-double-click
-  // TABS
-  - https://reactnavigation.org/docs/tab-based-navigation.html
-  - https://oblador.github.io/react-native-vector-icons/
-  - http://discuss.nativebase.io/t/where-to-get-the-list-of-icon-names-used-in-native-base/37/8
-*/
