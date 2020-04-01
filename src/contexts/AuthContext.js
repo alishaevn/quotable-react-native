@@ -1,6 +1,7 @@
 import React, { Component, createContext } from 'react'
 import { Alert } from 'react-native'
-import axios from 'axios'
+
+import { login, register } from '../utilities/apiCalls'
 
 class AuthContextProvider extends Component {
     state = {
@@ -25,37 +26,8 @@ class AuthContextProvider extends Component {
             Alert.alert('Please fill in all fields!')
         }
         email = email.toLowerCase()
-        // debugger
 
-        axios.post('http://localhost:3000/auth/login', {
-            email,
-            password,
-        }, {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            }
-        })
-            .then(async response => {
-                // debugger
-                const {
-                    email,
-                    name,
-                    token,
-                    username,
-                } = response.data
-
-                try {
-                    this.updateUser('email', email)
-                    this.updateUser('name', name)
-                    this.updateUser('token', token)
-                    this.updateUser('username', username)
-                    this.toggleAuth('isAuthenticated')
-                } catch (error) {
-                    console.log('failed to save the user or token to async storage because:', error)
-                }
-            })
-            .catch(error => console.log('failed to log the user in because:', error))
+        login(email, password, this.updateUser, this.toggleAuth)
     }
 
     onRegister = () => {
@@ -71,34 +43,7 @@ class AuthContextProvider extends Component {
         }
         email = email.toLowerCase()
 
-        axios.post('http://localhost:3000/users', {
-            email,
-            name,
-            password,
-            username,
-        }, {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            }
-        })
-            .then(async response => {
-                const {
-                    email,
-                    name,
-                    username,
-                } = response.data
-
-                try {
-                    this.updateUser('email', email)
-                    this.updateUser('name', name)
-                    this.updateUser('username', username)
-                    this.toggleAuth('isAuthenticated')
-                } catch (error) {
-                    console.log('failed to save the user to async storage because:', error)
-                }
-            })
-            .catch(error => console.log('failed to create the user because', error))
+        register(email, name, password, this.updateUser, username, this.toggleAuth)
     }
 
     render() {
