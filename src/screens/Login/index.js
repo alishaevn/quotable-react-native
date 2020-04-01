@@ -15,17 +15,20 @@ import styles from './styles'
 
 const Login = () => {
     const {
-        email,
         isAuthenticated,
-        name,
         onLogin,
         onRegister,
-        password,
         registering,
         toggleAuth,
         updateUser,
-        username,
+        user,
     } = useContext(AuthContext)
+    const {
+        email,
+        name,
+        password,
+        username,
+    } = user || {}
 
     let onPress
     let option
